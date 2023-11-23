@@ -7,17 +7,19 @@ import { redirect } from "next/navigation";
 import Profile from "@/src/models/Profile";
 
 async function ProfileDetails({ params: { profileId } }) {
-  // await Connect();
-  // const session = await getServerSession(authOptions);
-  // if (!session) redirect("/signin");
-  // const user = await User.findOne({ email: session.user.email });
-  // if (!user) redirect("/");
-  // const res = await fetch(`http://localhost:3000/api/profile/${profileId}`);
-  // const result = await res.json();
-  // if (!result.data) return <h3>صفحه مورد نظر یافت نشد</h3>;
-  // if (user.rule == "ADMIN")
-  //   return <ProfileDetailsPage data={result.data} rule="ADMIN" />;
-  return <ProfileDetailsPage />;
+  await Connect();
+  const session = await getServerSession(authOptions);
+  if (!session) redirect("/signin");
+  const user = await User.findOne({ email: session.user.email });
+  if (!user) redirect("/");
+  const res = await fetch(
+    `https://realstate-jn49zd595-aliasghar138006.vercel.app/api/profile/${profileId}`
+  );
+  const result = await res.json();
+  if (!result.data) return <h3>صفحه مورد نظر یافت نشد</h3>;
+  if (user.rule == "ADMIN")
+    return <ProfileDetailsPage data={result.data} rule="ADMIN" />;
+  return <ProfileDetailsPage data={result.data} />;
 }
 
 export default ProfileDetails;

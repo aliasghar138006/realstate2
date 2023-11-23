@@ -3,35 +3,34 @@ import styles from "@/templates/BuyResidentialPage.module.css";
 import Sidebar from "../modules/Sidebar";
 import Card from "../modules/Card";
 
-// async function BuyResidentialPage({ searchParams }) {
-//   const res = await fetch("http://localhost:3000/api/profile", {
-//     cache: "no-store",
-//   });
-//   const { data } = await res.json();
+async function BuyResidentialPage({ searchParams }) {
+  const res = await fetch(
+    "https://realstate-jn49zd595-aliasghar138006.vercel.app/api/profile",
+    {
+      cache: "no-store",
+    }
+  );
+  const { data } = await res.json();
 
-//   let finalData = data;
+  let finalData = data;
 
-//   if (searchParams.category) {
-//     finalData = finalData.filter((i) => i.category == searchParams.category);
-//   }
-//   return (
-//     <div className={styles.container}>
-//       <div className={styles.sidebar}>
-//         <Sidebar />
-//       </div>
-//       <div className={styles.main}>
-//         {!finalData.length ? (
-//           <p className={styles.text}>هیچ آگهی ثبت نشده است</p>
-//         ) : (
-//           finalData.map((i) => <Card key={i._id} data={i} />)
-//         )}
-//       </div>
-//     </div>
-//   );
-// }
-
-async function BuyResidentialPage() {
-  return <h1>Hi</h1>;
+  if (searchParams.category) {
+    finalData = finalData.filter((i) => i.category == searchParams.category);
+  }
+  return (
+    <div className={styles.container}>
+      <div className={styles.sidebar}>
+        <Sidebar />
+      </div>
+      <div className={styles.main}>
+        {!finalData.length ? (
+          <p className={styles.text}>هیچ آگهی ثبت نشده است</p>
+        ) : (
+          finalData.map((i) => <Card key={i._id} data={i} />)
+        )}
+      </div>
+    </div>
+  );
 }
 
 export default BuyResidentialPage;
