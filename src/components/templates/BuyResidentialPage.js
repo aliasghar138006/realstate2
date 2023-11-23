@@ -4,7 +4,7 @@ import Sidebar from "../modules/Sidebar";
 import Card from "../modules/Card";
 
 async function BuyResidentialPage({ searchParams }) {
-  const res = await fetch("http://localhost:3000/api/profile", {
+  const res = await fetch("http://realstate-mu.vercel.app/api/profile", {
     cache: "no-store",
   });
   const { data } = await res.json();

@@ -12,7 +12,9 @@ async function ProfileDetails({ params: { profileId } }) {
   if (!session) redirect("/signin");
   const user = await User.findOne({ email: session.user.email });
   if (!user) redirect("/");
-  const res = await fetch(`http://localhost:3000/api/profile/${profileId}`);
+  const res = await fetch(
+    `http://realstate-mu.vercel.app/api/profile/${profileId}`
+  );
   const result = await res.json();
   if (!result.data) return <h3>صفحه مورد نظر یافت نشد</h3>;
   if (user.rule == "ADMIN")
