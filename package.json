@@ -9,9 +9,18 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "mongoos": "^0.0.1-security",
+    "mongoose": "^7.6.3",
+    "next": "latest",
+    "next-auth": "^4.22.1",
     "react": "latest",
+    "react-copy-to-clipboard": "^5.1.0",
     "react-dom": "latest",
-    "next": "latest"
+    "react-hot-toast": "^2.4.1",
+    "react-icons": "^4.11.0",
+    "react-loader-spinner": "^5.4.5",
+    "react-multi-date-picker": "^4.4.1"
   },
   "devDependencies": {
     "eslint": "latest",
